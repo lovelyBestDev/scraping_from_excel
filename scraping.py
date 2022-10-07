@@ -158,7 +158,7 @@ def searchTypeChange(event):
 
 # Dialog
 root = tk.Tk()
-root.title('Tkinter Open File Dialog')
+root.title('Web Scraping that is developed by top developer')
 root.resizable(False, False)
 root.geometry('1200x370')
 
