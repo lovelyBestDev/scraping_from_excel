@@ -1,6 +1,3 @@
-from pickle import GLOBAL
-from tkinter import font
-from turtle import left, width
 import openpyxl
 from selenium import webdriver
 from tkinter import *
@@ -25,7 +22,10 @@ def fileScraping():
     global searchResult
     searchResult = []
     
-    browser = webdriver.Chrome()
+    option = webdriver.ChromeOptions()
+    option.add_argument('headless')
+
+    browser = webdriver.Chrome(options=option)
 
     # Define variable to load the dataframe
     dataframe = openpyxl.load_workbook(fileURL)  
@@ -67,7 +67,10 @@ def customScraping():
     if input_name.get() == "" and input_company.get() == "":
         return
     
-    browser = webdriver.Chrome()
+    option = webdriver.ChromeOptions()
+    option.add_argument('headless')
+
+    browser = webdriver.Chrome(options=option)
     
     resultUrl = "https://duckduckgo.com/?q=" + input_name.get() + input_company.get() +"&t=h_&ia=web"
     browser.get(resultUrl)
@@ -91,8 +94,8 @@ def scraping():
 # select file dialog function
 def select_file():
     filetypes = (
-        ('text files', '*.txt'),
-        ('All files', '*.*')
+        ('All files', '*.*'),
+        ('text files', '*.txt')
     )
 
     filename = fd.askopenfilename(
@@ -158,7 +161,7 @@ def searchTypeChange(event):
 
 # Dialog
 root = tk.Tk()
-root.title('Web Scraping that is developed by top developer')
+root.title('Web Scraping')
 root.resizable(False, False)
 root.geometry('1200x370')
 
