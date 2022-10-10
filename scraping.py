@@ -22,10 +22,11 @@ def fileScraping():
     global searchResult
     searchResult = []
     
-    option = webdriver.ChromeOptions()
-    option.add_argument('headless')
+    # option = webdriver.ChromeOptions()
+    # option.add_argument('headless')
 
-    browser = webdriver.Chrome(options=option)
+    # browser = webdriver.Chrome(options=option)
+    browser = webdriver.Chrome()
 
     # Define variable to load the dataframe
     dataframe = openpyxl.load_workbook(fileURL)  
@@ -67,10 +68,11 @@ def customScraping():
     if input_name.get() == "" and input_company.get() == "":
         return
     
-    option = webdriver.ChromeOptions()
-    option.add_argument('headless')
+    # option = webdriver.ChromeOptions()
+    # option.add_argument('headless')
 
-    browser = webdriver.Chrome(options=option)
+    # browser = webdriver.Chrome(options=option)
+    browser = webdriver.Chrome()
     
     resultUrl = "https://duckduckgo.com/?q=" + input_name.get() + input_company.get() +"&t=h_&ia=web"
     browser.get(resultUrl)
@@ -279,7 +281,7 @@ display_table = ttk.Treeview(frame)
 display_table['columns'] = ('item_id', 'item_name', 'item_company', 'item_position', 'item_url')
 
 display_table.column("#0", width=0, stretch=NO)
-display_table.column("item_id",anchor=CENTER, width=20)
+display_table.column("item_id",anchor=CENTER, width=30)
 display_table.column("item_name",anchor=W,width=120)
 display_table.column("item_company",anchor=W,width=120)
 display_table.column("item_position",anchor=W,width=450)
