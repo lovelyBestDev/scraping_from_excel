@@ -1,3 +1,4 @@
+import time
 import openpyxl
 from selenium import webdriver
 from tkinter import *
@@ -57,6 +58,8 @@ def fileScraping():
             for i in range(0, 4):
                 temp.append(row[i].value)
             searchResult.append(temp)
+            
+            time.sleep(1.5)
         cnt += 1
         
     dataframe.save("output.xlsx")
@@ -77,6 +80,8 @@ def customScraping():
     
     resultUrl = "https://duckduckgo.com/?q=" + '"' + input_name.get() + '"' + '+"'  + input_company.get() + '"' +"&t=h_&ia=web"
     browser.get(resultUrl)
+    
+    time.sleep(1.5)
     
     results = browser.find_element("id","links")
     
@@ -164,7 +169,7 @@ def searchTypeChange(event):
 
 # Dialog
 root = tk.Tk()
-root.title('Web Scraping')
+root.title('Deep Search')
 root.resizable(False, False)
 root.geometry('1200x370')
 
@@ -253,7 +258,7 @@ label_searchProperty_company.pack_forget()
 # run button
 btn_run = ttk.Button(
     root,
-    text='Run Scraping',
+    text='Run Search',
     command=scraping,
     width=15
 )
