@@ -37,13 +37,14 @@ def fileScraping():
     cnt = 0
     
     for row in rows:
-        resultString = "\""
+        resultString = '"'
         for col in range(0, 2):
             strArr = row[col].value.split()
             for indexStr in strArr:
                 resultString += indexStr + "+"
+            resultString = resultString[:-1] + '"' + '+' + '"'
         if cnt != 0:
-            resultUrl = "https://duckduckgo.com/?q=" + resultString +"&t=h_&ia=web"
+            resultUrl = "https://duckduckgo.com/?q=" + resultString[:-2] +"&t=h_&ia=web"
             browser.get(resultUrl)
 
             results = browser.find_element("id","links")
@@ -74,7 +75,7 @@ def customScraping():
     # browser = webdriver.Chrome(options=option)
     browser = webdriver.Chrome()
     
-    resultUrl = "https://duckduckgo.com/?q=" + input_name.get() + input_company.get() +"&t=h_&ia=web"
+    resultUrl = "https://duckduckgo.com/?q=" + '"' + input_name.get() + '"' + '+"'  + input_company.get() + '"' +"&t=h_&ia=web"
     browser.get(resultUrl)
     
     results = browser.find_element("id","links")
